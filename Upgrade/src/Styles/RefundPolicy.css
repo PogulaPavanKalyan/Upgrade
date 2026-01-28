@@ -1,0 +1,81 @@
+.refund-policy-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.7;
+}
+
+.refund-policy-container h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.last-updated {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 25px;
+}
+
+.refund-policy-container h2 {
+  font-size: 22px;
+  margin-top: 30px;
+  margin-bottom: 12px;
+  color: #1e293b;
+  border-left: 4px solid hsla(327, 83%, 53%, 0.999);
+  padding-left: 10px;
+}
+
+.refund-policy-container p {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.refund-policy-container ul {
+  padding-left: 22px;
+  margin-bottom: 10px;
+}
+
+.refund-policy-container ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.business-details {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.address-title {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.contact-details {
+  background: #eef2ff;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.contact-details a {
+  color: #c51212;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+.response-note {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #475569;
+}

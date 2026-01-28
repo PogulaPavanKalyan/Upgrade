@@ -1,0 +1,193 @@
+.review-section {
+  background: #fafafa;
+  padding: 70px 0;
+}
+
+/* 3 columns layout */
+.review-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  height: 520px;
+  overflow: hidden;
+}
+
+/* Each column */
+.review-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: scrollUp 28s linear infinite;
+}
+
+/* Different speeds = premium feel */
+.speed-0 {
+  animation-duration: 26s;
+}
+.speed-1 {
+  animation-duration: 32s;
+}
+.speed-2 {
+  animation-duration: 29s;
+}
+
+/* Pause on hover */
+.review-column:hover {
+  animation-play-state: paused;
+}
+
+/* Card */
+.review-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.review-header img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #ff7a00;
+  object-fit: cover;
+}
+
+.review-header h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.review-header span {
+  font-size: 0.85rem;
+  color: #ff7a00;
+}
+
+/* Text */
+.review-card p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Animation */
+@keyframes scrollUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+@keyframes scrollDown {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+  .review-columns {
+    grid-template-columns: 1fr;
+    height: 480px;
+  }
+}
+.review-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: scrollUp 28s linear infinite;
+}
+
+/* Left column */
+.speed-0 {
+  animation: scrollUp 26s linear infinite;
+}
+
+/* MIDDLE COLUMN (TOP → BOTTOM) */
+.speed-1 {
+  animation: scrollDown 32s linear infinite;
+}
+
+/* Right column */
+.speed-2 {
+  animation: scrollUp 29s linear infinite;
+}
+
+/* Pause on hover */
+.review-column:hover {
+  animation-play-state: paused;
+}
+@media (max-width: 991px) {
+  .review-columns {
+    grid-template-columns: repeat(2, 1fr);
+    height: 500px;
+  }
+
+  /* First column: bottom → top */
+  .speed-0 {
+    animation: scrollUp 28s linear infinite;
+  }
+
+  /* Second column: top → bottom */
+  .speed-1 {
+    animation: scrollDown 34s linear infinite;
+  }
+
+  /* Hide third column */
+  .speed-2 {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .review-columns {
+    grid-template-columns: 1fr;
+    height: 460px;
+  }
+
+  /* Single column, slower & readable */
+  .review-column {
+    animation: scrollUp 40s linear infinite;
+  }
+
+  /* Hide extra columns */
+  .speed-1,
+  .speed-2 {
+    display: none;
+  }
+}
+@keyframes scrollUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scrollDown {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.review-column:hover {
+  animation-play-state: paused;
+}
+
+.review-column:active {
+  animation-play-state: paused;
+}

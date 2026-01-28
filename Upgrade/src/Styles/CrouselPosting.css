@@ -1,0 +1,112 @@
+/* ============================
+   PAGE WRAPPER
+============================ */
+.carousel-upload-page {
+  min-height: 100vh;
+  background: #f4f6f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+/* ============================
+   CARD
+============================ */
+.carousel-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================
+   TITLE
+============================ */
+.carousel-card h2 {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #111827;
+}
+
+/* ============================
+   FORM
+============================ */
+.carousel-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ============================
+   INPUTS
+============================ */
+.carousel-form input[type="text"],
+.carousel-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.carousel-form textarea {
+  resize: none;
+  height: 90px;
+}
+
+.carousel-form input:focus,
+.carousel-form textarea:focus {
+  border-color: #2563eb;
+}
+
+/* ============================
+   FILE INPUT
+============================ */
+.carousel-form input[type="file"] {
+  border: 1px dashed #cbd5e1;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f9fafb;
+  cursor: pointer;
+}
+
+/* ============================
+   BUTTON
+============================ */
+.carousel-form button {
+  margin-top: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.carousel-form button:hover {
+  background: #1e40af;
+  transform: translateY(-1px);
+}
+
+/* ============================
+   MOBILE
+============================ */
+@media (max-width: 480px) {
+  .carousel-card {
+    padding: 24px;
+  }
+
+  .carousel-card h2 {
+    font-size: 20px;
+  }
+}

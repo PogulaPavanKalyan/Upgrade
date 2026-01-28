@@ -1,0 +1,9 @@
+
+@import './styles.css';
+
+.navbar{
+    background-color: blueviolet;
+    width: 100%;
+    height: 10%;
+    position: fixed;
+}

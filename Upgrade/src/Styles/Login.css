@@ -1,0 +1,238 @@
+/* =========================================
+   CLEAN PREMIUM SPLIT LAYOUT - UPGRADEU 
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --brand-primary: #8b5cf6;
+  --brand-dark: #2e1065;
+  --brand-gradient: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%);
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --bg-white: #ffffff;
+  --bg-soft: #f8fafc;
+}
+
+.auth-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-white);
+}
+
+/* --- LEFT SIDE: THE BRAND PANEL --- */
+.auth-brand-side {
+  flex: 1.2;
+  background: var(--brand-gradient);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+.auth-brand-side::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2064&auto=format&fit=crop') center/cover;
+  opacity: 0.4;
+  mix-blend-mode: luminosity;
+}
+
+.brand-content {
+  position: relative;
+  z-index: 2;
+  max-width: 480px;
+  text-align: center;
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.brand-logo-large {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+
+.brand-quote {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.brand-sub {
+  font-size: 16px;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* --- RIGHT SIDE: THE FORM PANEL --- */
+.auth-form-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  background: var(--bg-white);
+}
+
+.auth-card-modern {
+  width: 100%;
+  max-width: 420px;
+}
+
+.form-header {
+  margin-bottom: 40px;
+}
+
+.form-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.form-header p {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+/* --- INPUT STYLES --- */
+.input-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.modern-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modern-input-field label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon .field-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.input-with-icon input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: all 0.2s;
+}
+
+.input-with-icon input:focus {
+  outline: none;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+.input-with-icon input:focus+.field-icon {
+  color: var(--brand-primary);
+}
+
+/* --- BUTTON STYLES --- */
+.premium-btn {
+  width: 100%;
+  padding: 18px;
+  background: var(--brand-primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.premium-btn:hover {
+  background: var(--brand-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+}
+
+.premium-btn:active {
+  transform: translateY(0);
+}
+
+/* --- FOOTER --- */
+.auth-footer-simple {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.auth-footer-simple a {
+  color: var(--brand-primary);
+  text-decoration: none;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+.auth-footer-simple a:hover {
+  text-decoration: underline;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .auth-brand-side {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .auth-form-side {
+    padding: 30px 24px;
+  }
+
+  .form-header h1 {
+    font-size: 28px;
+  }
+}

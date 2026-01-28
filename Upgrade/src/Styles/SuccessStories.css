@@ -1,0 +1,172 @@
+/* ================= SECTION ================= */
+.ls-section {
+  padding: 70px 6%;
+  background: #ffffff;
+}
+
+.ls-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* ================= WRAPPER ================= */
+.ls-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ================= NAV ARROWS ================= */
+.nav-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: #4f8df7;
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* ================= CARD GRID ================= */
+.ls-cards {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+}
+
+/* ================= CARD ================= */
+.ls-card {
+  border-radius: 28px;
+  padding: 26px 22px;
+  text-align: center;
+  min-height: 520px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+}
+
+/* BACKGROUNDS */
+.blue { background: linear-gradient(#9dcafa, #ffffff); }
+.yellow { background: linear-gradient(#f8e7c7, #ffffff); }
+.pink { background: linear-gradient(#fad5db, #ffffff); }
+.purple { background: linear-gradient(#ded5fe, #ffffff); }
+
+/* ================= PROFILE IMAGE ================= */
+.ls-profile-img {
+  display: block;
+  margin: 0 auto 14px auto;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ================= NAME ================= */
+.ls-name {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+/* ================= COMPANY LOGO ================= */
+.company {
+  max-width: 110px;
+  margin: 16px auto;
+}
+
+/* ================= BEFORE ================= */
+.before {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+/* ================= FLOW ================= */
+.flow-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.flow-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: -30px; /* move flow to left */
+}
+
+.flow-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #4f8df7;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.flow-line {
+  width: 2px;
+  height: 36px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #9db7f5,
+    #9db7f5 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.flow-text {
+  font-size: 12px;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+/* ================= AFTER ================= */
+.after {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid #4f8df7;
+  background: #eef5ff;
+  font-weight: 600;
+}
+
+/* ================= TABLET ================= */
+@media (max-width: 1024px) {
+  .ls-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 600px) {
+  .ls-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  .ls-profile-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .flow-left {
+    margin-left: -18px;
+  }
+
+  .flow-text {
+    font-size: 11px;
+  }
+}

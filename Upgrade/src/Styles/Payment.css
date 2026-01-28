@@ -1,0 +1,40 @@
+.payment-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+}
+
+.payment-left, .payment-right {
+  width: 48%;
+}
+
+.payment-left h2, .payment-right h2 {
+  margin-bottom: 20px;
+}
+
+.payment-card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.payment-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-color: #0073e6;
+}
+
+.summary-box {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px;
+  background: #f9f9f9;
+}
+
+.summary-box p {
+  margin: 10px 0;
+  font-size: 16px;
+}

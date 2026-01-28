@@ -1,0 +1,114 @@
+/* ===============================
+   EDIT COURSE PAGE
+================================ */
+.edit-course-page {
+  padding: 40px 6%;
+  background: #f4f6fb;
+  min-height: 100vh;
+}
+
+.edit-course-page h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #111827;
+}
+
+/* ===============================
+   FORM CARD
+================================ */
+.edit-course-form {
+  max-width: 800px;
+  background: #ffffff;
+  margin: auto;
+  padding: 36px;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+/* ===============================
+   INPUTS
+================================ */
+.edit-course-form input,
+.edit-course-form textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  color: #111827;
+}
+
+.edit-course-form input:focus,
+.edit-course-form textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* TEXTAREA FULL WIDTH */
+.edit-course-form textarea {
+  grid-column: 1 / -1;
+  resize: none;
+}
+
+/* ===============================
+   SUBMIT BUTTON
+================================ */
+.edit-course-form button {
+  grid-column: 1 / -1;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.edit-course-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===============================
+   TABLET
+================================ */
+@media (max-width: 900px) {
+  .edit-course-page {
+    padding: 30px 4%;
+  }
+
+  .edit-course-form {
+    padding: 30px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .edit-course-page h2 {
+    font-size: 24px;
+  }
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 600px) {
+  .edit-course-page {
+    padding: 20px;
+  }
+
+  .edit-course-form {
+    padding: 24px;
+    grid-template-columns: 1fr;
+  }
+
+  .edit-course-page h2 {
+    font-size: 22px;
+  }
+
+  .edit-course-form button {
+    font-size: 14px;
+  }
+}
