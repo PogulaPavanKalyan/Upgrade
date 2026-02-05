@@ -9,6 +9,7 @@
   grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
   gap: 26px;
   background: #f9fafb;
+  margin-top: 100px;
 }
 
 /* ===========================
@@ -113,19 +114,22 @@
    ENROLL BUTTON
    =========================== */
 .courses-page .enroll-btn {
-  background: #16a34a;
+  background: var(--bg-gradient-dark);
   color: #ffffff;
   border: none;
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: 0.25s ease;
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-violet);
 }
 
 .courses-page .enroll-btn:hover {
-  background: #15803d;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-violet-lg);
+  filter: brightness(1.1);
 }
 
 /* ===========================

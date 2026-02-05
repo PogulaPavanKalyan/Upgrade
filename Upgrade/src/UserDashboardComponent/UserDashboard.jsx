@@ -37,6 +37,12 @@ const UserDashboard = () => {
 
   const [step, setStep] = useState(0);
 
+  // Footer Dropdown State
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const toggleDropdown = (section) => {
+    setActiveDropdown(activeDropdown === section ? null : section);
+  };
+
 
   return (
     <>
@@ -116,7 +122,7 @@ const UserDashboard = () => {
         <div className="row gy-4 cards4">
 
           <div className="col-12 col-md-6 col-lg-5">
-            <a href="https://ygrgobalitservices.com/">
+            <a href="https://ygrgobalitservices.com/" target="_blank">
               <div className="corp-card corp-left corp-blue icon-right" >
 
 
@@ -131,7 +137,7 @@ const UserDashboard = () => {
           </div>
 
           <div className="col-12 col-md-6 col-lg-5" >
-            <a href="https://ygrittraining.ygrgobalitservices.com/">
+            <a href="https://ygrittraining.ygrgobalitservices.com/" target="_blank">
               <div className="corp-card corp-right corp-orange icon-left">
                 <img src={rrtraining} alt="RR IT Trainings" />
                 <div className="corp-text">
@@ -143,7 +149,7 @@ const UserDashboard = () => {
           </div>
 
           <div className="col-12 col-md-6 col-lg-5">
-            <a href="https://youtube.com/@rrtalktrends?si=P_NbBgkCfE_Aj2kP">
+            <a href="https://youtube.com/@rrtalktrends?si=P_NbBgkCfE_Aj2kP" target="_blank">
               <div className="corp-card corp-left corp-green icon-right">
                 <div className="corp-text">
                   <h6>RR Talks (YouTube)</h6>
@@ -250,125 +256,108 @@ const UserDashboard = () => {
 
       {/* FOOTER */}
       <footer className="footer">
-        <div className="footer-section">
-          <h3>In-demand Careers</h3>
-          <p onClick={() => navigate(`/datascienceinfo`)}>Data Scientist</p>
-          <p onClick={() => navigate(`/javascriptinfo`)}>Full Stack Web Developer</p>
-          <p onClick={() => navigate(`/awsinfo`)}>Cloud Engineer</p>
-          <p onClick={() => navigate(`/projectmanagementinfo`)}>Project Manager</p>
-          <p onClick={() => navigate(`/gamedevinfo`)}>Game Developer</p>
-          <p onClick={() => navigate(`/Courses`)}>All Career Accelerators</p>
+
+        {/* Column 1: Brand & About */}
+        <div className="footer-section brand-section">
+          <h3>UpgradeU</h3>
+          <p className="footer-desc">
+            Empowering professional growth with industry-leading courses and certifications.
+            Learn, apply, and upgrade your career today.
+          </p>
+          <div className="social-links-text">
+            <span><a href="https://www.linkedin.com/company/ygr-gobal-it-services-pvt-ltd/" target="blank">LinkedIN</a></span> | <span> <a href="https://youtube.com/@rrtalktrends?si=ePSFA_O-lA0-YLqH" target="blank">YouTube</a></span> | <span > <a href="https://www.instagram.com/ygrgobalitservices?igsh=bGpkY3Rscmt0OWN4" target="blank">Instagram</a></span>
+          </div>
         </div>
 
-        <div className="footer-section">
-          <h3>Web Development</h3>
-          <p onClick={() => navigate(`/Courses`)}>Web Development</p>
-          <p onClick={() => navigate(`/javascriptinfo`)}>JavaScript</p>
-          <p onClick={() => navigate(`/reactinfo`)}>React JS</p>
-          <p onClick={() => navigate(`/angularinfo`)}>Angular</p>
-          <p onClick={() => navigate(`/javainfo`)}>Java</p>
-          <p onClick={() => navigate(`/nodejsinfo`)}>Node JS</p>
-          <p onClick={() => navigate(`/mongodbinfo`)}>MongoDB</p>
+        {/* Column 2: Platform & Company */}
+        <div className="footer-section">  
+          <h3>Platform</h3>
+          <p onClick={() => navigate(`/Aboutus`)}>About Us</p>
+          <p onClick={() => navigate(`/GetBlogs`)}>Blog & Insights</p>
+          <p onClick={() => navigate(`/Contactform`)}>Careers & Teaching</p>
+          <p onClick={() => navigate(`/Contactform`)}>Plans & Pricing</p>
+          <p onClick={() => navigate(`/Contactform`)}>Contact Support</p>
         </div>
 
+        {/* Column 3: Popular Domains (Interactive) */}
         <div className="footer-section">
-          <h3>IT Certifications</h3>
-          <p onClick={() => navigate(`/awsinfo`)}>Amazon AWS</p>
-          <p onClick={() => navigate(`/awsinfo`)}>AWS Certified Cloud Practitioner</p>
-          <p onClick={() => navigate(`/azureinfo`)}>AZ-900: Microsoft Azure Fundamentals</p>
-          <p onClick={() => navigate(`/awsinfo`)}>AWS Certified Solutions Architect – Associate</p>
-          <p onClick={() => navigate(`/kubernetesinfo`)}>Kubernetes</p>
-          <p onClick={() => navigate(`/salesforceinfo`)}>Salesforce Administrator</p>
+          <h3>Trending Domains</h3>
+
+          {/* Web Development Dropdown */}
+          <div className="footer-dropdown">
+            <p className="footer-dropdown-trigger" onClick={() => toggleDropdown('web')}>
+              Web & Full Stack {activeDropdown === 'web' ? '▲' : '▼'}
+            </p>
+            <div className={`footer-dropdown-content ${activeDropdown === 'web' ? 'active' : ''}`}>
+              <p onClick={() => navigate(`/Courses`)}>Web Development</p>
+              <p onClick={() => navigate(`/javascriptinfo`)}>JavaScript</p>
+              <p onClick={() => navigate(`/reactinfo`)}>React JS</p>
+              <p onClick={() => navigate(`/angularinfo`)}>Angular</p>
+              <p onClick={() => navigate(`/javainfo`)}>Java</p>
+              <p onClick={() => navigate(`/nodejsinfo`)}>Node JS</p>
+              <p onClick={() => navigate(`/mongodbinfo`)}>MongoDB</p>
+            </div>
+          </div>
+
+          {/* Data Science Dropdown */}
+          <div className="footer-dropdown">
+            <p className="footer-dropdown-trigger" onClick={() => toggleDropdown('data')}>
+              Data Science & AI {activeDropdown === 'data' ? '▲' : '▼'}
+            </p>
+            <div className={`footer-dropdown-content ${activeDropdown === 'data' ? 'active' : ''}`}>
+              <p onClick={() => navigate(`/datascienceinfo`)}>Data Science</p>
+              <p onClick={() => navigate(`/pythoninfo`)}>Python</p>
+              <p onClick={() => navigate(`/machinelearninginfo`)}>Machine Learning</p>
+              <p onClick={() => navigate(`/chatgptinfo`)}>ChatGPT</p>
+            </div>
+          </div>
+
+          {/* Cloud Computing Dropdown */}
+          <div className="footer-dropdown">
+            <p className="footer-dropdown-trigger" onClick={() => toggleDropdown('cloud')}>
+              Cloud Computing {activeDropdown === 'cloud' ? '▲' : '▼'}
+            </p>
+            <div className={`footer-dropdown-content ${activeDropdown === 'cloud' ? 'active' : ''}`}>
+              <p onClick={() => navigate(`/awsinfo`)}>Amazon AWS</p>
+              <p onClick={() => navigate(`/azureinfo`)}>Microsoft Azure</p>
+              <p onClick={() => navigate(`/kubernetesinfo`)}>Kubernetes</p>
+              <p onClick={() => navigate(`/cybersecurityinfo`)}>Cybersecurity</p>
+            </div>
+          </div>
+
+          {/* Business & Marketing Dropdown */}
+          <div className="footer-dropdown">
+            <p className="footer-dropdown-trigger" onClick={() => toggleDropdown('business')}>
+              Business & Marketing {activeDropdown === 'business' ? '▲' : '▼'}
+            </p>
+            <div className={`footer-dropdown-content ${activeDropdown === 'business' ? 'active' : ''}`}>
+              <p onClick={() => navigate(`/digitalmarketinginfo`)}>Digital Marketing</p>
+              <p onClick={() => navigate(`/projectmanagementinfo`)}>Project Management</p>
+              <p onClick={() => navigate(`/excelinfo`)}>Microsoft Excel</p>
+              <p onClick={() => navigate(`/powerbiinfo`)}>Power BI</p>
+            </div>
+          </div>
+
+          <p onClick={() => navigate(`/Courses`)} className="highlight-link">View All Courses →</p>
         </div>
 
+        {/* Column 4: Legal & Policy */}
         <div className="footer-section">
-          <h3>Leadership</h3>
-          <p onClick={() => navigate(`/leadershipinfo`)}>Leadership</p>
-          <p onClick={() => navigate(`/leadershipinfo`)}>Management Skills</p>
-          <p onClick={() => navigate(`/projectmanagementinfo`)}>Project Management</p>
-          <p onClick={() => navigate(`/productivityinfo`)}>Personal Productivity</p>
-          <p onClick={() => navigate(`/productivityinfo`)}>Emotional Intelligence</p>
-        </div>
-
-        <div className="footer-section">
-          <h3>Certifications by Skill</h3>
-          <p onClick={() => navigate(`/cybersecurityinfo`)}>Cybersecurity Certification</p>
-          <p onClick={() => navigate(`/projectmanagementinfo`)}>Project Management Certification</p>
-          <p onClick={() => navigate(`/awsinfo`)}>Cloud Certification</p>
-          <p onClick={() => navigate(`/datascienceinfo`)}>Data Analytics Certification</p>
-          <p onClick={() => navigate(`/hrmanagementinfo`)}>HR Management Certification</p>
-          <p onClick={() => navigate(`/digitalmarketinginfo`)}>Digital Marketing Certification</p>
-          <p onClick={() => navigate(`/flutterinfo`)}>Flutter Mobile Dev Certification</p>
-          <p onClick={() => navigate(`/Courses`)}>See all Certifications</p>
-        </div>
-
-        <div className="footer-section">
-          <h3>Data Science</h3>
-          <p onClick={() => navigate(`/datascienceinfo`)}>Data Science</p>
-          <p onClick={() => navigate(`/pythoninfo`)}>Python</p>
-          <p onClick={() => navigate(`/machinelearninginfo`)}>Machine Learning</p>
-          <p onClick={() => navigate(`/chatgptinfo`)}>ChatGPT</p>
-          <p onClick={() => navigate(`/deeplearninginfo`)}>Deep Learning</p>
-        </div>
-
-        <div className="footer-section">
-          <h3>Communication</h3>
-          <p onClick={() => navigate(`/communicationinfo`)}>Communication Skills</p>
-          <p onClick={() => navigate(`/communicationinfo`)}>Presentation Skills</p>
-          <p onClick={() => navigate(`/communicationinfo`)}>Public Speaking</p>
-          <p onClick={() => navigate(`/communicationinfo`)}>Writing</p>
-          <p onClick={() => navigate(`/communicationinfo`)}>PowerPoint</p>
-        </div>
-
-        <div className="footer-section">
-          <h3>Business Analytics &amp; Intelligence</h3>
-          <p onClick={() => navigate(`/excelinfo`)}>Microsoft Excel</p>
-          <p onClick={() => navigate(`/sqlinfo`)}>SQL</p>
-          <p onClick={() => navigate(`/digitalmarketinginfo`)}>Digital Marketing</p>
-          <p onClick={() => navigate(`/powerbiinfo`)}>Microsoft Power BI</p>
-          <p onClick={() => navigate(`/datascienceinfo`)}>Data Analysis</p>
-          <p onClick={() => navigate(`/projectmanagementinfo`)}>Business Analysis</p>
-        </div>
-
-        <div className="footer-section">
-          <h3>About</h3>
-          <p onClick={() => navigate(`/Aboutus`)}>About us</p>
-          <p onClick={() => navigate(`/GetBlogs`)}>Blog</p>
-          <p onClick={() => navigate(`/termsofuses`)}>Terms of use</p>
-          <p onClick={() => navigate(`/Shipping`)}>Shipping</p>
-          <p onClick={() => navigate(`/RefundPolicy`)}>Refund policy</p>
-        </div>
-
-        <div className="footer-section">
-          <h3>Discover UpgradeU</h3>
-          <p onClick={() => navigate(`/Contactform`)}>Get the app</p>
-          <p onClick={() => navigate(`/Contactform`)}>Teach on UpgradeU</p>
-          <p onClick={() => navigate(`/Contactform`)}>Plans and Pricing</p>
-          <p onClick={() => navigate(`/Contactform`)}>Affiliate</p>
-          <p onClick={() => navigate(`/Contactform`)}>Help and Support</p>
-        </div>
-
-        <div className="footer-section">
-          <h3>UpgradeU for Business</h3>
-          <p onClick={() => navigate(`/Contactform`)}>UpgradeU Business</p>
-        </div>
-
-        <div className="footer-section">
-          <h3>Legal &amp; Accessibility</h3>
-          <p onClick={() => navigate(`/accessibility`)}>Accessibility statement</p>
-          <p onClick={() => navigate(`/legal-protection`)}>Privacy policy</p>
+          <h3>Legal & Support</h3>
+          <p onClick={() => navigate(`/termsofuses`)}>Terms of Use</p>
+          <p onClick={() => navigate(`/legal-protection`)}>Privacy Policy</p>
+          <p onClick={() => navigate(`/RefundPolicy`)}>Refund Policy</p>
+          <p onClick={() => navigate(`/accessibility`)}>Accessibility</p>
           <p onClick={() => navigate(`/sitemap`)}>Sitemap</p>
-          <p onClick={() => navigate(`/termsofuses`)}>Terms</p>
         </div>
+
       </footer>
 
       <div className="footer-bottom">
-        <h2>
-          ©<span>UpgradeU </span>, @2025 All Rights Reserved.
-        </h2>
-        <p>
-          Designed By <span>YGR GOBAL IT SERVICES Pvt. Ltd, 2023.</span>
-        </p>
+        <div className="footer-bottom-content">
+          <p>© 2025 <strong>UpgradeU</strong>. All Rights Reserved.</p>
+          <p className="designer-credit">Designed By <strong>YGR GOBAL IT SERVICES.pvt.ltd,2023</strong></p>
+        </div>
       </div>
     </>
   );

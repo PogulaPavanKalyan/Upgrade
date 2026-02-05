@@ -1,6 +1,4 @@
-
-
-
+/* Uses global theme from theme.css */
 
 .course-page {
   margin-top: 5%;
@@ -42,7 +40,7 @@
   padding: 22px;
   border-radius: 14px;
   margin-bottom: 24px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 .course-section h3 {
@@ -62,7 +60,7 @@
   background: #ffffff;
   border-radius: 16px;
   padding: 18px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .thumbnail-wrapper {
@@ -80,7 +78,7 @@
   position: absolute;
   bottom: 8px;
   left: 8px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
   font-size: 12px;
   padding: 4px 8px;
@@ -119,9 +117,138 @@
   margin-bottom: 8px;
 }
 
+/* BUTTONS */
+.btn-primary,
+.buy-card .btn-primary {
+  background: var(--bg-gradient-dark);
+  color: white;
+  border: none;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-violet);
+  font-size: 1rem;
+}
+
+.btn-primary:hover,
+.buy-card .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-violet-lg);
+  filter: brightness(1.1);
+}
+
+.btn-outline-primary,
+.buy-card .btn-outline-primary {
+  background: transparent;
+  color: var(--primary-violet);
+  border: 2px solid var(--primary-violet);
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-size: 1rem;
+}
+
+.btn-outline-primary:hover,
+.buy-card .btn-outline-primary:hover {
+  background: var(--primary-violet);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-violet);
+}
+
+.btn-primary:disabled,
+.btn-outline-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
 /* RESPONSIVE */
+/* CURRICULUM LIST */
+.curriculum-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.curriculum-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.curriculum-item.unlocked {
+  cursor: pointer;
+  background: #ffffff;
+  border-left: 4px solid #991b1b;
+}
+
+.curriculum-item.unlocked:hover {
+  background: #fef2f2;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.curriculum-item.locked {
+  cursor: not-allowed;
+  opacity: 0.7;
+  background: #f1f5f9;
+}
+
+.curr-icon {
+  font-size: 18px;
+  margin-right: 14px;
+  width: 24px;
+  text-align: center;
+}
+
+.curr-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.curr-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.curr-action {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.curriculum-item.unlocked .curr-action {
+  color: #991b1b;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .col-lg-3 {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .course-title {
     font-size: 26px;
+  }
+
+  .buy-card {
+    position: static !important;
+    /* Disable sticky on mobile */
   }
 }

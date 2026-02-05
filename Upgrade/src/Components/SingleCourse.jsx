@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import "../Styles/SingleCourse.css";
 import BaseUrl from "./BaseUrl";
 
 const SingleCourse = () => {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const requestedVideoId = searchParams.get("videoId");
 
   const [course, setCourse] = useState(null);
   const [videos, setVideos] = useState([]);
@@ -37,6 +39,17 @@ const SingleCourse = () => {
 
     if (res.data.length > 0) {
       setVideos(res.data);
+
+      // Check for deep link
+      if (requestedVideoId) {
+        const found = res.data.find(v => v.videoId == requestedVideoId);
+        if (found) {
+          setCurrentVideo(found);
+          return;
+        }
+      }
+
+      // Default to first
       setCurrentVideo(res.data[0]);
     }
   };
@@ -75,7 +88,7 @@ const SingleCourse = () => {
 
       {/* LEFT: VIDEO AREA */}
       <div className="video-area">
-        <h1 className="course-title">{course.title}</h1>
+        <h1 className="course-title">{currentVideo ? currentVideo.videoTitle : course.title}</h1>
 
         {videoUrl && (
           <video
@@ -87,14 +100,11 @@ const SingleCourse = () => {
           >
             <source src={videoUrl} type="video/mp4" />
           </video>
-
-          
         )}
 
-  
-        
-
-        <p className="course-desc">{course.description}</p>
+        <p className="course-desc">
+          {currentVideo ? currentVideo.videoDescription : course.description}
+        </p>
       </div>
 
       {/* RIGHT: PLAYLIST */}
@@ -105,13 +115,12 @@ const SingleCourse = () => {
           {videos.map((v, index) => (
             <div
               key={v.videoId}
-              className={`playlist-item ${
-                currentVideo.videoId === v.videoId ? "active" : ""
-              }`}
+              className={`playlist-item ${currentVideo && currentVideo.videoId === v.videoId ? "active" : ""
+                }`}
               onClick={() => setCurrentVideo(v)}
             >
               <span>{index + 1}.</span>
-              <span>Lesson {index + 1}</span>
+              <span>{v.videoTitle || `Lesson ${index + 1}`}</span>
             </div>
           ))}
         </div>

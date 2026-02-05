@@ -9,6 +9,7 @@ import NavBar from "../UserDashboardComponent/NavBar";
 const AddtoCart = () => {
   const { token } = useAuth();
   const [cart, setCart] = useState([]);
+  const [images, setImages] = useState({});
   const navigate = useNavigate();
 
   /* ================= FETCH CART ================= */
@@ -33,6 +34,39 @@ const AddtoCart = () => {
   useEffect(() => {
     fetchCart();
   }, [token]);
+
+  /* ================= FETCH IMAGES ================= */
+  const loadImages = async (cartItems) => {
+    const imageMap = {};
+    await Promise.all(
+      cartItems.map(async (item) => {
+        if (!item.course || !item.course.id) return;
+        try {
+          const res = await BaseUrl.get(`getimage/${item.course.id}`, {
+            headers: { Authorization: `Bearer ${token}` },
+            responseType: "blob",
+          });
+          imageMap[item.course.id] = URL.createObjectURL(res.data);
+        } catch (err) {
+          console.error("Image load failed for course:", item.course.id);
+        }
+      })
+    );
+    setImages((prev) => ({ ...prev, ...imageMap }));
+  };
+
+  useEffect(() => {
+    if (cart.length > 0) {
+      loadImages(cart);
+    }
+  }, [cart]);
+
+  /* ================= CLEANUP IMAGE URLS ================= */
+  useEffect(() => {
+    return () => {
+      Object.values(images).forEach((url) => URL.revokeObjectURL(url));
+    };
+  }, [images]);
 
   /* ================= DELETE CART ITEM ================= */
   const handleDeleteCart = async (cartId, e) => {
@@ -66,73 +100,70 @@ const AddtoCart = () => {
   return (
     <>
 
-    <NavBar/>
-    <div className="cart-page container">
-      <h2>Your Cart</h2>
+      <NavBar />
+      <div className="cart-page container">
+        <h2>Your Cart</h2>
 
-      {cart.length === 0 ? (
-        <p className="empty-cart">Your cart is empty</p>
-      ) : (
-        <>
-          <div className="cart-grid">
-            {cart.map((item) => (
-              <div
-                key={item.id}
-                className="cart-card"
-                onClick={() =>
-                  navigate(`/SingleCourseDetails/${item.course.id}`)
-                }
-              >
-                <img
-                  src={
-                    item.course.thumbnail ||
-                    "https://via.placeholder.com/200"
+        {cart.length === 0 ? (
+          <p className="empty-cart">Your cart is empty</p>
+        ) : (
+          <>
+            <div className="cart-grid">
+              {cart.map((item) => (
+                <div
+                  key={item.id}
+                  className="cart-card"
+                  onClick={() =>
+                    navigate(`/SingleCourseDetails/${item.course.id}`)
                   }
-                  alt={item.course.title}
-                  className="cart-thumbnail"
-                />
+                >
+                  <img
+                    src={images[item.course.id] || "https://via.placeholder.com/200"}
+                    alt={item.course.title}
+                    className="cart-thumbnail"
+                  />
 
-                <div className="cart-details">
-                  <h4 className="course-title">
-                    {item.course.title}
-                  </h4>
+                  <div className="cart-details">
+                    <h4 className="course-title">
+                      {item.course.title}
+                    </h4>
 
-                  <p className="course-desc">
-                    {item.course.description}
-                  </p>
+                    <p className="course-desc">
+                      {item.course.description}
+                    </p>
 
-                  <p className="course-price">
-                    <strong>Price:</strong> ₹{item.course.price}
-                  </p>
+                    <p className="course-price">
+                      <strong>Price:</strong> ₹{item.course.price}
+                    </p>
 
-                  {/* DELETE BUTTON */}
-                  <button
-                    className="cart-delete-btn"
-                    onClick={(e) =>
-                      handleDeleteCart(item.id, e)
-                    }
-                  >
-                    Remove
-                  </button>
+                    {/* DELETE BUTTON */}
+                    <button
+                      className="cart-delete-btn"
+                      onClick={(e) =>
+                        handleDeleteCart(item.id, e)
+                      }
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* TOTAL */}
-          <div className="cart-total">
-            <h3>Total: ₹{totalPrice}</h3>
+            {/* TOTAL */}
+            <div className="cart-total">
+              <h3>Total: ₹{totalPrice}</h3>
 
-            <button
-              className="checkout-btn"
-              onClick={() => navigate("/checkout")}
-            >
-              Proceed to Checkout
-            </button>
-          </div>
-        </>
-      )}
-    </div>
+              <button
+                className="checkout-btn"
+                onClick={() => navigate("/checkout")}
+              >
+                Proceed to Checkout
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 };

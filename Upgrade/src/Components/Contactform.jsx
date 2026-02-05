@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useAuth } from "./Authprovider";
 import "../Styles/Contactform.css";
@@ -10,36 +9,60 @@ const Contactform = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone_number, setPhone_number] = useState("");
-  const [requirements, setRequirements] = useState("");
+  const [requirement, setRequirement] = useState("");
 
-  const handlesubmit = (e) => {
+  const handlesubmit = async (e) => {
     e.preventDefault();
 
     const body = {
       name,
       email,
       phone_number,
-      requirements,
+      requirement,
     };
 
-    BaseUrl
-      .post(
-        "/contactform",
-        body,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        console.log("Form submitted:", res.data);
-        alert("Form submitted successfully!");
-      })
-      .catch((err) => {
-        console.error("Error submitting form:", err);
+    try {
+      // 1️⃣ Submit form to backend
+      const res = await BaseUrl.post("/contactform", body, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
       });
+
+      console.log("Form submitted:", res.data);
+
+      // 2️⃣ Build WhatsApp message from user input
+      const whatsappNumber = "919347790288"; // 🔴 replace with YOUR WhatsApp number
+
+      const message = `
+New Contact Request
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone_number}
+Requirements: ${requirement}
+      `;
+
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+        message
+      )}`;
+
+      // 3️⃣ Open WhatsApp
+      window.open(whatsappUrl, "_blank");
+
+      alert("Form submitted successfully!");
+
+      // 4️⃣ Optional: clear form
+      setName("");
+      setEmail("");
+      setPhone_number("");
+      setRequirement("");
+
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      alert("Failed to submit form");
+    }
   };
 
   return (
@@ -73,8 +96,9 @@ const Contactform = () => {
 
         <textarea
           placeholder="Your Requirements"
-          value={requirements}
-          onChange={(e) => setRequirements(e.target.value)}
+          value={requirement}
+          onChange={(e) => setRequirement(e.target.value)}
+
           required
         ></textarea>
 

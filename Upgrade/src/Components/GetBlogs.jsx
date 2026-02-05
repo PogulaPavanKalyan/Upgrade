@@ -81,42 +81,50 @@ const GetBlogList = () => {
   return (
 
     <>
-    <NavBar/>
-    <div className="blog-list-page">
-      <h2 className="blog-list-title">Blog List</h2>
+      <NavBar />
+      <div className="blog-list-page">
+        <div className="blog-header">
+          <h2 className="blog-list-title">Insights & Articles</h2>
+          <p className="blog-list-subtitle">Explore the latest trends, tutorials, and career advice from industry experts.</p>
+        </div>
 
-      <div className="blog-list-grid">
-        {blogs.length === 0 ? (
-          <p>No blogs found</p>
-        ) : (
-          blogs.map((blog) => (
-            <div className="blog-list-card" key={blog.id}>
-              {blog.imageBlobUrl ? (
-                <img
-                  src={blog.imageBlobUrl}
-                  alt={blog.title}
-                  className="blog-list-img"
-                />
-              ) : (
-                <div className="blog-image-placeholder">
-                  Image not available
-                </div>
-              )}
-
-              <div className="blog-list-content">
-                <h3>{blog.title}</h3>
-                <p>
-                  {blog.content.length > 120
-                    ? blog.content.substring(0, 120) + "..."
-                    : blog.content}
-                </p>
-              </div>
+        <div className="blog-list-grid">
+          {blogs.length === 0 ? (
+            <div className="no-blogs">
+              <p>No articles found at the moment.</p>
             </div>
-          ))
-        )}
-      </div>
-    </div>
+          ) : (
+            blogs.map((blog) => (
+              <div className="blog-list-card" key={blog.id}>
+                <div className="blog-img-wrapper">
+                  {blog.imageBlobUrl ? (
+                    <img
+                      src={blog.imageBlobUrl}
+                      alt={blog.title}
+                      className="blog-list-img"
+                    />
+                  ) : (
+                    <div className="blog-image-placeholder">
+                      <span>UpgradeU</span>
+                    </div>
+                  )}
+                </div>
 
+                <div className="blog-list-content">
+                  <span className="blog-category">Article</span>
+                  <h3>{blog.title}</h3>
+                  <p>
+                    {blog.content.length > 120
+                      ? blog.content.substring(0, 120) + "..."
+                      : blog.content}
+                  </p>
+                  <button className="read-more-btn">Read Article →</button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
     </>
   );
 };

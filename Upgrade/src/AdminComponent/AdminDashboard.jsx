@@ -17,9 +17,11 @@ import {
   Sun,
   Bell,
   Search,
-  ChevronRight
+  ChevronRight,
+  ClipboardList
 } from "lucide-react";
-import "../Styles/AdminDashboard.css";
+import "../AdminStyles/AdminDashboard.css";
+import { link } from "framer-motion/client";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -84,12 +86,13 @@ const AdminDashboard = () => {
     { name: "Users", path: "/registeruser", icon: <Users size={20} />, roles: ["ADMIN"] },
     { name: "Blogs", path: "/PostBlogs", icon: <FileText size={20} />, roles: ["ADMIN"] },
     { name: "Payments", path: "/PaymentDetails", icon: <CreditCard size={20} />, roles: ["ADMIN"] },
+    { name: "Add Exam", path: "/admin/add-exam", icon: <ClipboardList size={20} />, roles: ["ADMIN"] },
     { name: "Carousel Post", path: "/crouselposting", icon: <ImageIcon size={20} />, roles: ["ADMIN"] },
     { name: "Carousel Delete", path: "/crouseldeleting", icon: <Trash2 size={20} />, roles: ["ADMIN"] },
   ];
 
   const stats = [
-    { title: "Total Users", value: statsData.userCount.toLocaleString(), icon: <Users size={24} />, color: "blue", trend: "+12%" },
+    { title: "Total Users", value: statsData.userCount.toLocaleString(), icon: <Users size={24} />, color: "blue", trend: "+12%", link: "/registeruser" },
     { title: "Active Courses", value: statsData.courseCount.toLocaleString(), icon: <BookOpen size={24} />, color: "purple", trend: "+5%", link: "/AllCourses" },
     { title: "Revenue", value: `₹${statsData.revenue.toLocaleString()}`, icon: <IndianRupee size={24} />, color: "green", trend: "+18%" },
     { title: "Transactions", value: statsData.totalTransactions.toLocaleString(), icon: <CreditCard size={24} />, color: "orange", trend: "-2%", link: "/PaymentDetails" },
@@ -242,6 +245,10 @@ const AdminDashboard = () => {
                 <button className="action-tile" onClick={() => navigate("/addCourse")}>
                   <PlusSquare />
                   <span>New Course</span>
+                </button>
+                <button className="action-tile" onClick={() => navigate("/admin/add-exam")}>
+                  <ClipboardList size={24} />
+                  <span>Add Exam</span>
                 </button>
                 <button className="action-tile" onClick={() => navigate("/PostBlogs")}>
                   <FileText />

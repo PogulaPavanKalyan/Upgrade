@@ -19,6 +19,7 @@ import UserDashboard from './UserDashboardComponent/UserDashboard';
 import Aboutus from "./UserDashboardComponent/Aboutus"
 import Shipping from "./UserDashboardComponent/Shipping"
 import RefundPolicy from "./UserDashboardComponent/RefundPolicy"
+import CareerSupport from "./UserDashboardComponent/CareerSupport"
 
 import Termsofuses from './Components/Termsofuses';
 import Carouselposting from './AdminComponent/CrouselPosting';
@@ -33,6 +34,7 @@ import PostCourseImage from './AdminComponent/PostCourseImage';
 import AdminCourseDetails from './AdminComponent/AdminCourseDetails';
 import RegisterUser from './AdminComponent/RegisterUser';
 import SingleUserDetails from './AdminComponent/SingleUserDetails';
+import AdminAddExam from './AdminComponent/AdminAddExam';
 
 
 
@@ -86,8 +88,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='login' element={<Login />} />
+        <Route path='/login' element={<Login />} />
         <Route path='register' element={<Register />} />
+        <Route path="/career" element={<CareerSupport />} />
 
 
         <Route path='/'
@@ -173,6 +176,8 @@ function App() {
         <Route path='registeruser' element={<RegisterUser />} />
         <Route path='/singleuserdetails/:id' element={<SingleUserDetails />} />
         <Route path='/admincoursedetails/:id' element={<AdminCourseDetails />} />
+        <Route path='/admin/add-exam/:courseId' element={<AdminAddExam />} />
+        <Route path='/admin/add-exam' element={<AdminAddExam />} />
         <Route path='/editcourses/:id' element={<EditCourse />} />
         <Route path='paymentDetails' element={<AdminPaymentDetails />} />
         <Route path='protectedRoute' element={<ProtectedRoute />} />
